@@ -1,0 +1,46 @@
+:root{
+    --azul: #6EB3D0;
+    --verde: #3f8323;
+    --rosa: #F7B6D2;
+    --laranja: #F4A623;
+    --preto: #000000;
+    --branco: #FFFFFF;
+}
+
+header,footer{
+    background-color: var(--azul);
+}
+
+.card button{
+    border-radius: 0%;
+    background-color: var(--rosa);
+    border: none;
+    width: 10rem;
+    color: var(--preto);
+}
+
+.card button:hover{
+    background-color: #bd6d90;
+}
+
+input{
+    border: 1px solid black!important;
+}
+
+aside{
+    width: 50%;
+}
+
+#temaAtualEscuro{
+    display: none;
+}
+
+@media screen and (max-width:1050px){
+    #formularioGrupo{
+        flex-direction: column;
+    }
+
+    #formularioGrupo aside{
+        width: 100%;
+    }
+}
