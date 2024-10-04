@@ -1,7 +1,3 @@
-var catalogo = []
-var carrinho = []
-var id = 0;
-
 class Produto {
     constructor(id, imgSrc, titulo, desc, valor) {
         this.id = id
@@ -12,8 +8,8 @@ class Produto {
     }
 }
 
-catalogo.push(new Produto(0,'#','Coleira','lorem',100))
 
+var i = 0
 function mostrarCatalogo() {
     catalogo.forEach(cadaProduto => {
         document.getElementById("catalogo").innerHTML += `
@@ -31,5 +27,3 @@ function mostrarCatalogo() {
         `
     });
 }
-
-mostrarCatalogo()
