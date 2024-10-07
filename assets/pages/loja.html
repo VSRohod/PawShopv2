@@ -20,7 +20,7 @@
                 </button>
                 <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
                     <ul class="navbar-nav">
-                        <a class="navbar-brand" href="#"> <img src="../images/logo/logoWithName.svg" alt=""></a>
+                        <a class="navbar-brand" href="../../index.html"> <img src="../images/logo/logoWithName.svg" alt=""></a>
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="../../index.html">Home</a>
                         </li>
@@ -34,7 +34,7 @@
                             <a class="nav-link" href="#">Contatos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="assets/pages/loja.html">Loja</a>
+                            <a class="nav-link active" href="loja.html">Loja</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
@@ -53,7 +53,8 @@
     </header>
 
     <main>
-        <section id="catalogo"></section>
+        <h1 class="text-center text-info">LOJINHA DE PETS</h1>
+        <section id="catalogo" class="gap-3 justify-content-center d-flex flex-wrap my-3 "></section>
     </main>
 
     <footer class="text-center py-3">
@@ -63,11 +64,19 @@
     <!-- offcanvas -->
     <div class="offcanvas offcanvas-start" tabindex="-1" id="carrinho" aria-labelledby="offcanvasExampleLabel">
         <div class="offcanvas-header">
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Offcanvas</h5>
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">Carrinho</h5>
           <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
-        <div class="offcanvas-body">
-          <div id="carrinhoLista"></div>
+        <div class="offcanvas-body d-flex flex-column justify-content-between">
+          <!-- carrinho lista -->
+          <div id="carrinhoLista" class="container-fluid"></div>
+          <!-- carrinho info -->
+          <div id="carrinhoInfo" class="d-flex justify-content-between container-fluid">
+            <div id="valorTotal">
+                R$ 0.00
+            </div>
+            <button class="btn btn-success" type="button">PAGAR</button>
+          </div>
         </div>
     </div> 
 
