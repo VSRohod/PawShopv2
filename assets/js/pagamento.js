@@ -18,8 +18,3 @@ window.addEventListener('load', () => {
     `
 
 })
-
-
-function finalizarCompra(){
-    localStorage.removeItem('valorTotal')
-}
