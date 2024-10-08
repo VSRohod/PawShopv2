@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pawnshop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles/style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse d-flex justify-content-between" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <a class="navbar-brand" href="../../index.html"> <img src="../images/logo/logoWithName.svg" alt=""></a>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="../../index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Adoção</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Galeria</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contatos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="loja.html">Loja</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <div class="form-check form-switch d-flex align-items-center h-100 mx-3 justify-content-between"
+                                style="width: 150px;">
+                                <input class="form-check-input" type="checkbox" role="switch" id="botaoTema">
+                                <label class="form-check-label" for="botaoTema">Tema: <span
+                                        id="temaAtual">Claro</span></label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="text-center text-info">PAGAMENTO</h1>
+
+        <section id="resumo" class="flex-column gap-3 align-items-center d-flex my-3 ">
+            <h3>RESUMO DA COMPRA</h3>
+            <div id="valorTotal" class="container d-flex justify-content-center border p-2"></div>
+        </section>  
+
+        <section id="tipoPagamento" class="gap-3 flex-column align-items-center d-flex my-3 ">
+            <h3>SELECIONE O TIPO DE PAGAMENTO</h3>
+            <div id="tipoPagamentoEscolha" class="container gap-3 d-flex justify-content-center border p-2">
+                <button type="button" class="btn btn-primary">BOLETO</button>
+                <button type="button" class="btn btn-primary">PIX</button>
+                <button data-bs-toggle="collapse" data-bs-target="#cartao" type="button" class="btn btn-primary">CARTÃO</button>
+            </div>
+        </section>
+
+        <section id="pagamento" class="my-3">
+                <div id="cartao" class="collapse border m-3 p-3flex-column align-items-center">
+                    <div class="d-flex flex-column align-items-center container-fluid p-3">
+                        <h3>CARTÃO</h3>
+                        <form class="row g-3 container-fluid needs-validation" novalidate>
+                            <div class="col-md-4">
+                            <label for="email" class="form-label">Email: </label>
+                            <input type="text" class="form-control" id="email" required>
+                            <div class="valid-feedback">
+                                Email válido!
+                            </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="primeiroNome" class="form-label">Primeiro nome: </label>
+                                <input type="text" class="form-control" id="primeiroNome" required>
+                                <div class="valid-feedback">
+                                Nome válido!
+                                </div>
+                            </div>
+
+                            <h3>INFORMAÇÕES SOBRE O CARTÃO</h3>
+
+                            <div class="col-md-4">
+                            <label for="nomeCartao" class="form-label">Nome no cartão</label>
+                            <div class="input-group has-validation">
+                                <input type="text" class="form-control" id="nomeCartao" required>
+                                <div class="invalid-feedback">
+                                Por favor insira um nome válido!
+                                </div>
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                            <label for="numeroCartao" class="form-label">Número do cartão: </label>
+                            <input type="text" placeholder="000-0000-0000-0000" class="form-control" id="numeroCartao" required>
+                            <div class="invalid-feedback">
+                                Por favor insira um cartão válido!
+                            </div>
+                            </div>
+                            <div class="col-md-3">
+                            <label for="cvv" class="form-label">cvv</label>
+                            <input type="text" class="form-control" id="cvv" required>
+                            <div class="invalid-feedback">
+                                Por favor insira um cvv válido!
+                            </div>
+                            </div>
+                            <div class="col-12">
+                            <button onclick="finalizarCompra()" class="btn btn-success" type="button">FINALIZAR COMPRA</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </section>
+    </main>
+
+    <footer class="text-center py-3">
+        <h5>Todos os direitos reservados a @PawShop - 2023</h5>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script src="../js/script.js"></script>
+    <script src="../js/pagamento.js"></script>
+</body>
+
+</html>

@@ -1,11 +1,9 @@
 var catalogo = []
 var carrinho = []
 var valorTotal = 0
-var id = 0;
 
 class Produto {
-    constructor(id, imgSrc, titulo, desc, valor) {
-        this.id = id
+    constructor(imgSrc, titulo, desc, valor) {
         this.imgSrc = imgSrc
         this.titulo = titulo
         this.desc = desc
@@ -13,10 +11,17 @@ class Produto {
     }
 }
 
-catalogo.push(new Produto(0,'../images/products/productImage.png','Coleira','A coleira é o acessório essencial para manter o seu companheiro de quatro patas seguro e com estilo. Feita com materiais de alta qualidade, nossa coleira é resistente e confortável para o seu cão. Com diversos designs e cores disponíveis, você pode encontrar a coleira perfeita que combina com a personalidade do seu peludo amigo. Além de proporcionar segurança durante os passeios, a coleira é uma expressão do amor e cuidado que você tem pelo seu cão.',100))
-catalogo.push(new Produto(1,'../images/products/productImage2.png','Comida','lorem',20))
-catalogo.push(new Produto(2,'../images/products/productImage3.png','Disco de brinquedo','lorem',120))
-catalogo.push(new Produto(3,'../images/products/productImage4.png','Casinha','lorem',200))
+class ProdutoCarrinho {
+    constructor(titulo, valor) {
+        this.titulo = titulo
+        this.valor = valor
+    }
+}
+
+catalogo.push(new Produto('../images/products/productImage.png','Coleira','A coleira é o acessório essencial para manter o seu companheiro de quatro patas seguro e com estilo. Feita com materiais de alta qualidade, nossa coleira é resistente e confortável para o seu cão. Com diversos designs e cores disponíveis, você pode encontrar a coleira perfeita que combina com a personalidade do seu peludo amigo. Além de proporcionar segurança durante os passeios, a coleira é uma expressão do amor e cuidado que você tem pelo seu cão.',100))
+catalogo.push(new Produto('../images/products/productImage2.png','Comida','Ofereça ao seu cão a nutrição de que ele precisa com a nossa seleção de alimentos premium. Nossas opções de comida são formuladas com ingredientes de alta qualidade, proporcionando uma dieta equilibrada e saborosa. Temos uma variedade de rações secas, úmidas e até mesmo opções naturais e orgânicas para atender às necessidades alimentares do seu pet. Cuide da saúde do seu cão com o melhor em nutrição, garantindo que ele se sinta energizado e feliz todos os dias.',20))
+catalogo.push(new Produto('../images/products/productImage3.png','Disco de brinquedo','Mantenha seu cão entretido e ativo com nosso disco de brinquedo, projetado para horas de diversão ao ar livre. Feito de materiais seguros e duráveis, o disco é perfeito para jogos de busca e interação com o seu cão. Seu design aerodinâmico permite lançamentos precisos, proporcionando ao seu peludo momentos de alegria e exercício. Leve-o para o parque ou o quintal e desfrute de momentos emocionantes e saudáveis com seu cão, fortalecendo ainda mais a conexão entre vocês.',120))
+catalogo.push(new Produto('../images/products/productImage4.png','Casinha','Nossa casinha para cães é um verdadeiro lar dentro de casa. Feita com materiais duráveis e resistentes às intempéries, ela oferece um refúgio seguro e aconchegante para o seu pet. Com um design espaçoso e confortável, a casinha é o local perfeito para seu cão descansar, se abrigar do sol ou da chuva, e relaxar com todo o conforto que merece. Garanta que seu melhor amigo tenha um lugar aconchegante para chamar de seu com a nossa casinha de qualidade.',200))
 
 function mostrarCatalogo() {
     catalogo.forEach(cadaProduto => {
@@ -40,21 +45,34 @@ mostrarCatalogo()
 
 // CARRINHO
 
-function adicionarAoCarrinho(nomeProduto,valorProduto){
+function atualizarCarrinho(){
     document.getElementById('carrinhoLista').innerHTML = ``
-    carrinho.push([nomeProduto,valorProduto])
 
     carrinho.forEach(cadaProduto => {
         document.getElementById('carrinhoLista').innerHTML += `
-            <div class="container-fluid d-flex justify-content-between">
-                <h6> ${cadaProduto[0]} </h6>
-                <h6> R$ ${cadaProduto[1]} </h6>
+            <div class="container-fluid p-2 d-flex align-items-center border justify-content-between my-2">
+                <h6 class="m-0"> ${cadaProduto.titulo} </h6>
+                <h6 class="m-0"> R$ ${cadaProduto.valor} </h6>
+                <button class="btn btn-danger" type="button"> X </button>
             </div>
         `
     });
 
-    valorTotal = valorTotal + valorProduto
     document.getElementById('valorTotal').innerHTML = `
         R$ ${valorTotal}
     `
+}
+
+function adicionarAoCarrinho(nomeProduto,valorProduto){
+    carrinho.push(new ProdutoCarrinho(nomeProduto,valorProduto))
+
+    valorTotal = valorTotal + valorProduto
+
+    atualizarCarrinho()
+}
+
+function pagar(){
+    localStorage.setItem('valorTotal',valorTotal)
+
+    location.href = "http://127.0.0.1:5500/assets/pages/pagamento.html"
 }
